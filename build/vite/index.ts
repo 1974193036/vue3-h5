@@ -14,6 +14,7 @@ import Sitemap from 'vite-plugin-sitemap'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import { createViteVConsole } from './vconsole'
 import { loadEnv } from 'vite'
+import copyIndexTo404 from './vite-plugin-copy-index-to-404'
 
 export function createVitePlugins(mode: string) {
   const env = loadEnv(mode, process.cwd())
@@ -82,6 +83,8 @@ export function createVitePlugins(mode: string) {
 
     // https://github.com/vuejs/devtools-next
     VueDevTools(),
+
+    copyIndexTo404(),
 
     // https://github.com/antfu/vite-plugin-pwa
     // VitePWA({
