@@ -17,7 +17,7 @@ useHead({
     {
       rel: 'icon',
       type: 'image/png',
-      href: '/favicon.svg',
+      href: `${import.meta.env.VITE_APP_PUBLIC_PATH}/favicon.svg`,
     },
   ],
 })
