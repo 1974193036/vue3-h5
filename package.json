@@ -5,6 +5,7 @@
   "packageManager": "pnpm@9.13.0",
   "description": "An mobile web apps template based on the Vue 3 ecosystem",
   "license": "MIT",
+  "homepage": "https://1974193036.github.io/vue3-h5",
   "scripts": {
     "dev": "cross-env MOCK_SERVER_PORT=8086 vite",
     "build": "vue-tsc --noEmit && vite build",
