@@ -8,14 +8,14 @@ const show = computed(() => route.name && routeWhiteList.includes(route.name))
 </script>
 
 <template>
-  <van-tabbar v-if="show" v-model="active" placeholder route>
-    <van-tabbar-item replace to="/">
+  <van-tabbar v-if="show" v-model="active" :placeholder="true" :route="true">
+    <van-tabbar-item :replace="true" to="/">
       首页
       <template #icon>
         <div class="i-carbon:home" />
       </template>
     </van-tabbar-item>
-    <van-tabbar-item replace to="/profile">
+    <van-tabbar-item :replace="true" to="/profile">
       我的
       <template #icon>
         <div class="i-carbon:user" />
