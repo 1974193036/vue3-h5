@@ -1,6 +1,6 @@
 import process from 'node:process'
 import { unheadVueComposablesImports } from '@unhead/vue'
-import legacy from '@vitejs/plugin-legacy'
+// import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -15,6 +15,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import { createViteVConsole } from './vconsole'
 import { loadEnv } from 'vite'
 import copyIndexTo404 from './vite-plugin-copy-index-to-404'
+import vitePluginMoveSourcemap from './vite-plugin-move-sourcemap'
 
 export function createVitePlugins(mode: string) {
   const env = loadEnv(mode, process.cwd())
@@ -70,9 +71,9 @@ export function createVitePlugins(mode: string) {
       resolvers: [VantResolver()],
     }),
 
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-    }),
+    // legacy({
+    //   targets: ['defaults', 'not IE 11'],
+    // }),
 
     // https://github.com/antfu/unocss
     // see uno.config.ts for config
@@ -85,6 +86,10 @@ export function createVitePlugins(mode: string) {
     VueDevTools(),
 
     copyIndexTo404(),
+
+    vitePluginMoveSourcemap({
+      outDir: env.VITE_APP_OUT_DIR || 'dist',
+    }),
 
     // https://github.com/antfu/vite-plugin-pwa
     // VitePWA({

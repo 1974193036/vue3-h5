@@ -20,6 +20,23 @@ import 'vant/es/toast/style'
 import 'vant/es/dialog/style'
 import 'vant/es/notify/style'
 import 'vant/es/image-preview/style'
+import ArmsRum from '@arms/rum-browser'
+
+ArmsRum.init({
+  pid: 'g8drvq0cf6@675755662129c46',
+  endpoint: 'https://g8drvq0cf6-default-cn.rum.aliyuncs.com',
+  spaMode: 'history',
+  evaluateApi: async (options, response) => {
+    // 返回的字段会覆盖默认内容，不返回的字段会依然使用SDK自定生成内容
+    return {
+      // 以下可选
+      snapshots: JSON.stringify({
+        params: JSON.stringify(options), // 请求入参
+        resBody: JSON.stringify(response), // 响应体
+      }),
+    }
+  },
+})
 
 const app = createApp(App)
 const head = createHead()

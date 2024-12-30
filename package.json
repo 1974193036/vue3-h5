@@ -18,6 +18,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@arms/rum-browser": "^0.0.34",
     "@unhead/vue": "^1.11.11",
     "@vant/touch-emulator": "^1.4.0",
     "@vant/use": "^1.6.0",
@@ -50,6 +51,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^9.14.0",
     "eslint-plugin-format": "^0.1.2",
+    "fast-glob": "^3.3.2",
     "husky": "^9.1.6",
     "less": "^4.2.0",
     "mockjs": "^1.1.0",

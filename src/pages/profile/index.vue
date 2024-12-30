@@ -13,6 +13,12 @@ function login() {
 
   router.push({ name: 'login', query: { redirect: 'profile' } })
 }
+
+function testError() {
+  const str = null
+  // eslint-disable-next-line no-console
+  console.log(str.length)
+}
 </script>
 
 <template>
@@ -32,6 +38,9 @@ function login() {
 
     <VanCellGroup :inset="true" class="!mt-16">
       <van-cell title="设置" icon="setting-o" is-link to="/settings" />
+    </VanCellGroup>
+    <VanCellGroup :inset="true" class="!mt-16">
+      <van-cell title="测试报错" icon="setting-o" @click="testError" />
     </VanCellGroup>
   </div>
 </template>
