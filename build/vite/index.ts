@@ -16,11 +16,12 @@ import { createViteVConsole } from './vconsole'
 import { loadEnv } from 'vite'
 import copyIndexTo404 from './vite-plugin-copy-index-to-404'
 import vitePluginMoveSourcemap from './vite-plugin-move-sourcemap'
+import { rumVitePlugin } from '@arms/rum-vite-plugin'
 
 export function createVitePlugins(mode: string) {
   const env = loadEnv(mode, process.cwd())
 
-  return [
+  const plugins = [
     // https://github.com/posva/unplugin-vue-router
     VueRouter({
       extensions: ['.vue'],
@@ -84,40 +85,47 @@ export function createVitePlugins(mode: string) {
 
     // https://github.com/vuejs/devtools-next
     VueDevTools(),
-
-    copyIndexTo404(),
-
-    vitePluginMoveSourcemap({
-      outDir: env.VITE_APP_OUT_DIR || 'dist',
-    }),
-
-    // https://github.com/antfu/vite-plugin-pwa
-    // VitePWA({
-    //   registerType: 'autoUpdate',
-    //   includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
-    //   manifest: {
-    //     name: 'vue3-vant-mobile',
-    //     short_name: 'vue3-vant-mobile',
-    //     theme_color: '#ffffff',
-    //     icons: [
-    //       {
-    //         src: '/pwa-192x192.png',
-    //         sizes: '192x192',
-    //         type: 'image/png',
-    //       },
-    //       {
-    //         src: '/pwa-512x512.png',
-    //         sizes: '512x512',
-    //         type: 'image/png',
-    //       },
-    //       {
-    //         src: '/pwa-512x512.png',
-    //         sizes: '512x512',
-    //         type: 'image/png',
-    //         purpose: 'any maskable',
-    //       },
-    //     ],
-    //   },
-    // }),
   ]
+
+  if (mode === 'production') {
+    plugins.push(
+      copyIndexTo404(),
+
+      vitePluginMoveSourcemap({
+        outDir: env.VITE_APP_OUT_DIR || 'dist',
+      }),
+
+      rumVitePlugin(),
+
+      // https://github.com/antfu/vite-plugin-pwa
+      // VitePWA({
+      //   registerType: 'autoUpdate',
+      //   includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
+      //   manifest: {
+      //     name: 'vue3-vant-mobile',
+      //     short_name: 'vue3-vant-mobile',
+      //     theme_color: '#ffffff',
+      //     icons: [
+      //       {
+      //         src: '/pwa-192x192.png',
+      //         sizes: '192x192',
+      //         type: 'image/png',
+      //       },
+      //       {
+      //         src: '/pwa-512x512.png',
+      //         sizes: '512x512',
+      //         type: 'image/png',
+      //       },
+      //       {
+      //         src: '/pwa-512x512.png',
+      //         sizes: '512x512',
+      //         type: 'image/png',
+      //         purpose: 'any maskable',
+      //       },
+      //     ],
+      //   },
+      // }),
+    )
+  }
+  return plugins
 }

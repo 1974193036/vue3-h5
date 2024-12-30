@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "3.8.0",
+    "@arms/rum-vite-plugin": "^0.0.6",
     "@iconify-json/carbon": "^1.2.4",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.9.0",

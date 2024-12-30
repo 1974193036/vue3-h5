@@ -31,8 +31,8 @@ ArmsRum.init({
     return {
       // 以下可选
       snapshots: JSON.stringify({
-        params: JSON.stringify(options), // 请求入参
-        resBody: JSON.stringify(response), // 响应体
+        params: options, // 请求入参
+        resBody: response, // 响应体
       }),
     }
   },

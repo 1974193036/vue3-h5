@@ -58,7 +58,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
 
     build: {
-      sourcemap: 'hidden',
+      sourcemap: true,
       cssCodeSplit: false,
       chunkSizeWarningLimit: 2048,
       outDir: env.VITE_APP_OUT_DIR || 'dist',
