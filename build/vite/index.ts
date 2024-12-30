@@ -91,11 +91,11 @@ export function createVitePlugins(mode: string) {
     plugins.push(
       copyIndexTo404(),
 
+      rumVitePlugin(),
+
       vitePluginMoveSourcemap({
         outDir: env.VITE_APP_OUT_DIR || 'dist',
       }),
-
-      rumVitePlugin(),
 
       // https://github.com/antfu/vite-plugin-pwa
       // VitePWA({

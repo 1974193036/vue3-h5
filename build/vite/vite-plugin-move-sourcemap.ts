@@ -8,12 +8,18 @@ export default function vitePluginSourcemap(options: { outDir: string }): Plugin
 
   return {
     name: 'vite-plugin-move-sourcemap',
-    writeBundle() {
+    async writeBundle() {
       const targetFileName = `${outDir}/sourcemaps`
 
       const files = fg.sync(`${outDir}/**/*.map`)
 
       // 遍历文件列表并移动文件到指定目录
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(true)
+        }, 1000)
+      })
+
       for (const filePath of files) {
         const destinationPath = `${targetFileName}/${path.basename(filePath)}`
 
