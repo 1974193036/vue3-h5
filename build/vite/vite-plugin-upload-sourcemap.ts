@@ -20,14 +20,10 @@ interface IOptions {
 }
 export default function vitePluginUploadSourcemap(options: IOptions): Plugin {
   const { uid, pid } = options // 获取输出目录 dist
+
+  // 环境变量注入到 github actions 中
   const accessKeyId = process.env.VITE_APP_ALIYUN_RAM_ACCESSKEYID
   const accessKeySecret = process.env.VITE_APP_ALIYUN_RAM_ACCESSKEYSECRET
-  // eslint-disable-next-line no-console
-  console.log('accessKeyId', accessKeyId)
-  // eslint-disable-next-line no-console
-  console.log('accessKeySecret', accessKeySecret)
-  // eslint-disable-next-line no-console
-  console.log(process.env)
 
   const client = new OSS({
     // yourregion填写Bucket所在地域。以华东1（杭州）为例，Region填写为oss-cn-hangzhou。
