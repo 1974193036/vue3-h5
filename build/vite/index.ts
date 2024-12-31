@@ -15,7 +15,8 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import { createViteVConsole } from './vconsole'
 import { loadEnv } from 'vite'
 import copyIndexTo404 from './vite-plugin-copy-index-to-404'
-import vitePluginMoveSourcemap from './vite-plugin-move-sourcemap'
+// import vitePluginMoveSourcemap from './vite-plugin-move-sourcemap'
+import vitePluginUploadSourcemap from './vite-plugin-upload-sourcemap'
 import { rumVitePlugin } from '@arms/rum-vite-plugin'
 
 export function createVitePlugins(mode: string) {
@@ -93,8 +94,9 @@ export function createVitePlugins(mode: string) {
 
       rumVitePlugin(),
 
-      vitePluginMoveSourcemap({
-        outDir: env.VITE_APP_OUT_DIR || 'dist',
+      vitePluginUploadSourcemap({
+        uid: env.VITE_APP_AliYUN_UID,
+        pid: env.VITE_APP_AliYUN_ARMS_PID,
       }),
 
       // https://github.com/antfu/vite-plugin-pwa

@@ -1,7 +1,7 @@
 {
   "name": "vue3-vant-mobile",
   "type": "module",
-  "version": "3.3.0",
+  "version": "1.0.3",
   "packageManager": "pnpm@9.13.0",
   "description": "An mobile web apps template based on the Vue 3 ecosystem",
   "license": "MIT",
@@ -46,6 +46,7 @@
     "@vant/auto-import-resolver": "^1.2.1",
     "@vitejs/plugin-legacy": "^5.4.3",
     "@vitejs/plugin-vue": "^5.1.4",
+    "ali-oss": "^6.22.0",
     "autoprefixer": "^10.4.20",
     "bumpp": "^9.8.1",
     "consola": "^3.2.3",

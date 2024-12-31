@@ -47,6 +47,12 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+
+      - name: Set Environment
+        env:
+          VITE_APP_ALIYUN_RAM_ACCESSKEYID: ${{ secrets.VITE_APP_ALIYUN_RAM_ACCESSKEYID }}
+          VITE_APP_ALIYUN_RAM_ACCESSKEYSECRET: ${{ secrets.VITE_APP_ALIYUN_RAM_ACCESSKEYSECRET }}
+
       - name: Build
         run: pnpm build
       - name: Setup Pages

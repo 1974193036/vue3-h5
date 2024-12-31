@@ -3,12 +3,16 @@ import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 
-export default function copyIndexTo404(): Plugin {
+export default function copyIndexTo404(options?: { outDir: string }): Plugin {
   return {
     name: 'copy-index-to-404',
-    writeBundle() {
-      const indexPath = path.resolve(process.cwd(), 'dist', 'index.html')
-      const fourZeroFourPath = path.resolve(process.cwd(), 'dist', '404.html')
+    writeBundle(outputOptions) {
+      let { dir: _outDir } = outputOptions
+      if (!_outDir) {
+        _outDir = options?.outDir || 'dist'
+      }
+      const indexPath = path.resolve(process.cwd(), _outDir, 'index.html')
+      const fourZeroFourPath = path.resolve(process.cwd(), _outDir, '404.html')
 
       if (fs.existsSync(indexPath)) {
         fs.copyFileSync(indexPath, fourZeroFourPath)
