@@ -4,6 +4,7 @@ const menuItems = computed(() => ([
   { title: '持久化 Pinia 状态', route: 'counter' },
   { title: 'KeepAlive 演示', route: 'keepalive' },
   { title: '404页面 演示', route: 'unknown' },
+  { title: '接口 演示', route: 'fetchdata' },
 ]))
 </script>
 
