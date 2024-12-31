@@ -47,11 +47,16 @@ ArmsRum.init({
   },
   evaluateApi: async (options, response) => {
     // 返回的字段会覆盖默认内容，不返回的字段会依然使用SDK自定生成内容
+    let respText = ''
+    // 当前为使用fetch请求的情况
+    if (response && response.text) {
+      respText = await response.text()
+    }
     return {
       // 以下可选
       snapshots: JSON.stringify({
         params: options, // 请求入参
-        resBody: response, // 响应体
+        resBody: respText, // 响应体
       }),
     }
   },
